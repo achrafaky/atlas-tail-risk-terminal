@@ -291,8 +291,7 @@ pytest -q          # run the test suite
 
 ### Achraf Akiyaf
 
-**Master MMSD** · FST Tanger
-*Supervised by Prof. AZMANI Abdellah*
+
 
 <sub>Built with Python, Streamlit, GARCH, EVT, HMM — and a healthy respect for fat tails.</sub>
 
