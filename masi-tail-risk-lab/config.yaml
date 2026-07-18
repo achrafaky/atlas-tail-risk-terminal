@@ -1,0 +1,20 @@
+# Configuration centrale du projet (un senior ne hardcode jamais)
+data:
+  raw_file: data/raw/masi.csv
+  processed_file: data/processed/masi_clean.parquet
+  min_start_year: 2010
+
+evt:
+  block_frequency: "ME"     # maxima mensuels
+  threshold_quantile: 0.90  # point de départ, à justifier par MRL plot
+  bootstrap_iterations: 1000
+
+margin:
+  contract_multiplier_mad: 10      # 10 MAD par point d'indice (Future MASI 20)
+  mpor_days: 2                     # margin period of risk
+  confidence_levels: [0.99, 0.995, 0.997]
+  reference_deposit_mad: 1000      # dépôt de garantie initial communiqué
+
+backtest:
+  window: 750
+  refit_every: 25
