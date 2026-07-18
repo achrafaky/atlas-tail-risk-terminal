@@ -2,7 +2,7 @@
 
 <br>
 
-<img src="images/dashboard%20atlas%205.png" width="100%" alt="ATLAS Risk Terminal">
+<img src="images/dashboard%20atlas%201.png" width="100%" alt="ATLAS Risk Terminal">
 
 <br><br>
 
@@ -58,44 +58,49 @@ Every number on screen is backed by a full statistical diagnostic suite undernea
 
 ## ◆ &nbsp;LIVE TERMINAL
 
-<table>
-<tr>
-<td width="50%" valign="top">
+<sub>One continuous dashboard, scrolled top to bottom ↓</sub>
 
-<img src="images/dashboard%20atlas%204.png" width="100%">
+<br>
 
-**Market View**
-<sub>Price · Bollinger bands · VaR 99% threshold · COVID marker</sub>
+<img src="images/dashboard%20atlas%201.png" width="100%">
 
-</td>
-<td width="50%" valign="top">
+**① Header & KPIs**
+<sub>Spot MASI · GARCH volatility · VaR 99% EVT · recommended capital per contract</sub>
 
-<img src="images/dashboard%20atlas%203.png" width="100%">
-
-**Risk Gauge & Model Stack**
-<sub>Crash warning gauge · Gaussian → GARCH-EVT comparison</sub>
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
+<br>
 
 <img src="images/dashboard%20atlas%202.png" width="100%">
 
-**Drawdown Tracker**
-<sub>Cumulative loss since last peak — worst: −37.6%</sub>
+**② Market View**
+<sub>Price · Bollinger bands · VaR 99% threshold overlay · COVID crash marker</sub>
 
-</td>
-<td width="50%" valign="top">
+<br>
+
+<img src="images/dashboard%20atlas%203.png" width="100%">
+
+**③ Risk Gauge & Model Stack**
+<sub>Crash warning gauge · Gaussian → Historical → EVT → GARCH-EVT comparison</sub>
+
+<br>
+
+<img src="images/dashboard%20atlas%204.png" width="100%">
+
+**④ What-If Stress Test & Position Simulator**
+<sub>Volatility shock slider · real-time margin recalculation · LONG/SHORT simulator</sub>
+
+<br>
+
+<img src="images/dashboard%20atlas%205.png" width="100%">
+
+**⑤ Drawdown & Regime Detection**
+<sub>Cumulative loss since last peak (worst: −37.6%) · HMM market regimes</sub>
+
+<br>
 
 <img src="images/stress%20tests%20de%20la%20marge.png" width="100%">
 
-**Margin Stress Tests**
-<sub>Vol +100% · Flash crash · COVID 2020 scenarios</sub>
-
-</td>
-</tr>
-</table>
+**Margin Stress Scenarios**
+<sub>Vol +100% · Flash crash · COVID 2020 — normal vs. stressed margin</sub>
 
 <br>
 
