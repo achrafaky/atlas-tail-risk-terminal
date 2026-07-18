@@ -1,8 +1,7 @@
 <div align="center">
 
-# 📊 ATLAS — Tail Risk Terminal
-
-### *Institutional-grade tail risk & margin engine for the MASI Index*
+# ATLAS
+### *Tail Risk & Margin Terminal — MASI 20 Index*
 
 <p>
   <img src="https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white" />
@@ -16,45 +15,71 @@
   <img src="https://img.shields.io/badge/POT-Peaks%20Over%20Threshold-0057B7?style=flat-square" />
   <img src="https://img.shields.io/badge/GARCH--EVT-Conditional%20Volatility-0057B7?style=flat-square" />
   <img src="https://img.shields.io/badge/HMM-Regime%20Detection-0057B7?style=flat-square" />
+  <img src="https://img.shields.io/badge/Monte%20Carlo-Simulation-0057B7?style=flat-square" />
 </p>
 
 **Master MMSD — FST Tanger** · Achraf Akiyaf · Supervisor: Prof. AZMANI Abdellah
 
+<br>
+
+<img src="report/figures/dashboard_overview.png" width="100%" alt="ATLAS Dashboard">
+
 </div>
 
 <br>
 
-<div align="center">
-  <img src="report/figures/dashboard_overview.png" width="90%" alt="ATLAS Dashboard Overview">
-</div>
+## 📖 Table of Contents
 
-<br>
+- [Overview](#-overview)
+- [Live Terminal](#️-live-terminal)
+- [Methodology](#-methodology)
+- [EVT Diagnostics](#-evt-diagnostics)
+- [Risk Engine Results](#-risk-engine-results)
+- [Stress Testing & Simulation](#️-stress-testing--simulation)
+- [Project Structure](#️-project-structure)
+- [Installation](#️-installation)
+- [Testing](#-testing)
+- [Disclaimer](#️-disclaimer)
 
 ---
 
 ## ✨ Overview
 
-**ATLAS** is a real-time tail-risk and margin desk built on the **MASI 20** index (Casablanca Stock Exchange). It goes beyond textbook VaR by stacking four risk models of increasing sophistication — Gaussian, Historical, **Extreme Value Theory (POT)**, and **GARCH-EVT** — to show *why* naive models systematically underestimate crash risk, and to compute the capital a trading desk should actually hold.
+**ATLAS** is a real-time tail-risk and margin desk built on the **MASI 20** index (Casablanca Stock Exchange). It goes beyond textbook VaR by stacking four risk models of increasing sophistication — Gaussian, Historical, **Extreme Value Theory (POT)**, and **GARCH-EVT** — to demonstrate *why* naive models systematically underestimate crash risk, and to compute the capital a trading desk should actually hold against it.
 
-> Built as a pedagogical + quantitative research tool, not a trading signal generator.
+Every model in the pipeline is backed by full statistical diagnostics (QQ-plots, mean residual life, parameter stability, block maxima, Monte Carlo loss distributions) — not just headline numbers.
+
+> Built as a quantitative research & pedagogical tool — not a trading signal generator.
 
 ---
 
-## 🖥️ Live Dashboard
+## 🖥️ Live Terminal
 
 <table>
 <tr>
 <td width="50%">
 
-**Risk Gauge & Model Comparison**
+**KPI Header — real-time risk metrics**
+<img src="report/figures/kpi_header.png" width="100%">
 
+</td>
+<td width="50%">
+
+**Market Chart — Price, Bollinger, VaR band**
+<img src="report/figures/market_chart.png" width="100%">
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**Risk Gauge & Model Comparison**
 <img src="report/figures/risk_gauge_models.png" width="100%">
 
 </td>
 <td width="50%">
 
 **Drawdown & Stress Periods**
-
 <img src="report/figures/drawdown_stress.png" width="100%">
 
 </td>
@@ -71,8 +96,68 @@
 | **2. Tail estimation** | GEV / POT (Peaks Over Threshold) | Models the fat tails that Gaussian VaR misses |
 | **3. Combined** | GARCH-EVT | Conditional volatility × extreme value tail → most conservative, most realistic VaR |
 | **4. Regimes** | Hidden Markov Model (HMM) | Detects latent market states (calm / turbulent / crash) |
+| **5. Validation** | Monte Carlo simulation | Simulates thousands of loss paths from the fitted distribution |
 
-**Result — VaR 99% (1-day) across models:**
+---
+
+## 📊 EVT Diagnostics
+
+Full diagnostic suite validating the Extreme Value Theory fit before it feeds the margin engine:
+
+<table>
+<tr>
+<td width="33%" align="center">
+
+**QQ-Plot**
+<img src="report/figures/qq_plot.png" width="100%">
+<sub>Goodness-of-fit of the GPD tail</sub>
+
+</td>
+<td width="33%" align="center">
+
+**Mean Residual Life**
+<img src="report/figures/mean_residual_life.png" width="100%">
+<sub>Threshold selection for POT</sub>
+
+</td>
+<td width="33%" align="center">
+
+**Block Maxima**
+<img src="report/figures/bloc_maxima.png" width="100%">
+<sub>GEV fit on annual/monthly maxima</sub>
+
+</td>
+</tr>
+<tr>
+<td width="33%" align="center">
+
+**Return Level Plot**
+<img src="report/figures/return_level_plot.png" width="100%">
+<sub>Expected extreme return by return period</sub>
+
+</td>
+<td width="33%" align="center">
+
+**Parameter Stability**
+<img src="report/figures/parameter_stability.png" width="100%">
+<sub>Shape/scale stability across thresholds</sub>
+
+</td>
+<td width="33%" align="center">
+
+**Monte Carlo Loss Distribution**
+<img src="report/figures/monte_carlo_distribution.png" width="100%">
+<sub>10,000+ simulated loss paths</sub>
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📈 Risk Engine Results
+
+**VaR 99% (1-day) across models:**
 
 | Model | VaR 99% |
 |---|---|
@@ -83,17 +168,24 @@
 
 The clear escalation demonstrates the core thesis: *ignoring fat tails and volatility clustering leads to structurally under-capitalized trading desks.*
 
+<div align="center">
+<img src="report/figures/var99_conditional.png" width="70%" alt="Conditional VaR 99%">
+</div>
+
+**Key figures:**
+- 📉 Worst historical drawdown: **−37.6%**
+- 🔥 Worst historical day (16/03/2020, COVID crash): **−9.23%**
+- 💰 Recommended capital per contract: **8,652 MAD**
+
 ---
 
-## 🚀 Features
+## 🎚️ Stress Testing & Simulation
 
-- 📈 **Live VaR 99% (EVT)** and recommended capital per contract
-- 🔥 **"Replay worst day"** — one-click simulation of the 16/03/2020 crash (−9.23%)
-- 🎚️ **What-If stress testing** — volatility shock slider recalculating VaR, potential loss, and required margin in real time
-- 🎲 **Position simulator** — margin requirement for LONG/SHORT positions (illustrative, not a trading signal)
-- 📉 **Drawdown tracker** — cumulative loss since last peak, worst historical drawdown: **−37.6%**
-- 🧩 **Regime detection (HMM)** — market state classification
-- 📄 **One-click PDF risk report generation**
+<img src="report/figures/stress_test_margin.png" width="100%" alt="What-If stress test and margin simulator">
+
+- **"Replay worst day"** — one-click simulation of the 16/03/2020 crash
+- **What-If stress slider** — recalculates VaR, potential loss, and required margin under a custom volatility shock
+- **Position simulator** — margin requirement for LONG/SHORT positions (illustrative, draws randomly from the historical distribution — not a trading signal)
 
 ---
 
@@ -109,7 +201,7 @@ masi-tail-risk-lab/
 │   └── processed/                   # Cleaned & feature-engineered data
 ├── notebooks/
 │   ├── 01_data_exploration.ipynb
-│   ├── 02_evt_modeling.ipynb        # GEV / POT fitting
+│   ├── 02_evt_modeling.ipynb        # GEV / POT fitting, diagnostics
 │   ├── 03_margin_model.ipynb        # Capital / margin engine
 │   ├── 04_backtesting.ipynb
 │   └── 05_conditional_margin_stress.ipynb
@@ -171,6 +263,6 @@ This project is for **academic and research purposes only**. The position simula
 **Achraf Akiyaf** — Master MMSD, FST Tanger
 Supervised by Prof. AZMANI Abdellah
 
-<sub>Built with Python, Streamlit, GARCH, EVT, and a healthy respect for fat tails.</sub>
+<sub>Built with Python, Streamlit, GARCH, EVT, HMM, and a healthy respect for fat tails.</sub>
 
 </div>
