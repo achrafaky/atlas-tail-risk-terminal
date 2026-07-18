@@ -22,7 +22,7 @@
 
 <br>
 
-<img src="report/figures/dashboard_overview.png" width="100%" alt="ATLAS Dashboard">
+<img src="report/figures/dashboard%20atlas%201.png" width="100%" alt="ATLAS Dashboard">
 
 </div>
 
@@ -60,13 +60,13 @@ Every model in the pipeline is backed by full statistical diagnostics (QQ-plots,
 <td width="50%">
 
 **KPI Header — real-time risk metrics**
-<img src="report/figures/kpi_header.png" width="100%">
+<img src="report/figures/dashboard%20atlas%205.png" width="100%">
 
 </td>
 <td width="50%">
 
 **Market Chart — Price, Bollinger, VaR band**
-<img src="report/figures/market_chart.png" width="100%">
+<img src="report/figures/dashboard%20atlas%204.png" width="100%">
 
 </td>
 </tr>
@@ -74,13 +74,13 @@ Every model in the pipeline is backed by full statistical diagnostics (QQ-plots,
 <td width="50%">
 
 **Risk Gauge & Model Comparison**
-<img src="report/figures/risk_gauge_models.png" width="100%">
+<img src="report/figures/dashboard%20atlas%203.png" width="100%">
 
 </td>
 <td width="50%">
 
 **Drawdown & Stress Periods**
-<img src="report/figures/drawdown_stress.png" width="100%">
+<img src="report/figures/dashboard%20atlas%202.png" width="100%">
 
 </td>
 </tr>
@@ -116,7 +116,7 @@ Full diagnostic suite validating the Extreme Value Theory fit before it feeds th
 <td width="33%" align="center">
 
 **Mean Residual Life**
-<img src="report/figures/mean_residual_life.png" width="100%">
+<img src="report/figures/mean%20residual%20life%20and%20parameter%20stability.png" width="100%">
 <sub>Threshold selection for POT</sub>
 
 </td>
@@ -132,21 +132,21 @@ Full diagnostic suite validating the Extreme Value Theory fit before it feeds th
 <td width="33%" align="center">
 
 **Return Level Plot**
-<img src="report/figures/return_level_plot.png" width="100%">
+<img src="report/figures/return%20level%20plot.png" width="100%">
 <sub>Expected extreme return by return period</sub>
 
 </td>
 <td width="33%" align="center">
 
 **Parameter Stability**
-<img src="report/figures/parameter_stability.png" width="100%">
+<img src="report/figures/mean%20residual%20life%20and%20parameter%20stability.png" width="100%">
 <sub>Shape/scale stability across thresholds</sub>
 
 </td>
 <td width="33%" align="center">
 
 **Monte Carlo Loss Distribution**
-<img src="report/figures/monte_carlo_distribution.png" width="100%">
+<img src="report/figures/Distribution%20Monte%20carlo%20des%20pertes.png" width="100%">
 <sub>10,000+ simulated loss paths</sub>
 
 </td>
@@ -169,7 +169,7 @@ Full diagnostic suite validating the Extreme Value Theory fit before it feeds th
 The clear escalation demonstrates the core thesis: *ignoring fat tails and volatility clustering leads to structurally under-capitalized trading desks.*
 
 <div align="center">
-<img src="report/figures/var99_conditional.png" width="70%" alt="Conditional VaR 99%">
+<img src="report/figures/Var%2099%20cond.png" width="70%" alt="Conditional VaR 99%">
 </div>
 
 **Key figures:**
@@ -181,7 +181,7 @@ The clear escalation demonstrates the core thesis: *ignoring fat tails and volat
 
 ## 🎚️ Stress Testing & Simulation
 
-<img src="report/figures/stress_test_margin.png" width="100%" alt="What-If stress test and margin simulator">
+<img src="report/figures/stress%20tests%20de%20la%20marge.png" width="100%" alt="What-If stress test and margin simulator">
 
 - **"Replay worst day"** — one-click simulation of the 16/03/2020 crash
 - **What-If stress slider** — recalculates VaR, potential loss, and required margin under a custom volatility shock
